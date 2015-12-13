@@ -23,16 +23,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
+		System.out.println("ASDASDASDASDASD");
 		return new UserDetails() {
 			
 			public boolean isEnabled() {
 				// TODO Auto-generated method stub
-				return false;
+				return true;
 			}
 			
 			public boolean isCredentialsNonExpired() {
 				// TODO Auto-generated method stub
-				return false;
+				return true;
 			}
 			
 			public boolean isAccountNonLocked() {
@@ -47,12 +48,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 			
 			public String getUsername() {
 				// TODO Auto-generated method stub
-				return null;
+				return "mbogusiak@gmail.com	";
 			}
 			
 			public String getPassword() {
 				// TODO Auto-generated method stub
-				return null;
+				return "password";
 			}
 			
 			public Collection<? extends GrantedAuthority> getAuthorities() {

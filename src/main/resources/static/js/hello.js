@@ -41,6 +41,10 @@ angular.module('hello', [ 'ngRoute' ])
       $scope.greeting = data;
     })
   })
+//    .controller('LedCtrl', function($scope, $http) {
+//    	alert("asd");
+//
+//  })
 .controller('navigation',
   function($rootScope, $scope, $http, $location) {
 

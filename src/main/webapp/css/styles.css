@@ -33,3 +33,28 @@ footer {
   -o-border-radius: 10px;
   border-radius: 10px;
 }
+
+
+.led{
+    height:10vh;
+    width:10vh;
+}
+
+
+.status-ok{
+    height:10vh;
+    width:10vh;
+    background:green;
+}
+
+
+.status-warning{
+    height:10vh;
+    width:10vh;
+    background:orange;
+}
+
+
+.status-error{
+    background:red;
+}
