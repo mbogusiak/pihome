@@ -1,10 +1,13 @@
 package com.marcin.pihome.config;
 
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 
-//@Configuration	
-public class Integration extends WebSecurityConfigurerAdapter {
+@Configuration	
+@ImportResource("classpath:integration.xml")
+public class IntegrationConfig extends WebSecurityConfigurerAdapter {
 
 //	@Bean
 //	public MessageChannel weatherInputChannel() {

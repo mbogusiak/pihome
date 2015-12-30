@@ -1,4 +1,4 @@
-package com.marcin.pihome.services;
+package com.marcin.pihome.integration.weather;
 
 import java.util.Collection;
 

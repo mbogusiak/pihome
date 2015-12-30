@@ -24,17 +24,17 @@
 	<int:channel id="weatherOutputSoapChannel" />
 	<int:channel id="outChannel" />
 	<int:channel id="outputWeatherChannel" />
-	
-	<bean id="myBean" class = "com.marcin.pihome.services.ScheduledSender"/>
+	<int:channel id="farenheitToCelciousChannel" />
+	<bean id="myBean" class = "com.marcin.pihome.integration.weather.ScheduledSender"/>
 
   <task:scheduled-tasks scheduler="myScheduler">
-        <task:scheduled ref="myBean" method="ask" fixed-delay="5000" />
+        <task:scheduled ref="myBean" method="ask" fixed-delay="600000" />
     </task:scheduled-tasks>
  
     <task:scheduler id="myScheduler"/>
 	
 
-	<int:gateway id="weatherSender" service-interface="com.marcin.pihome.services.WeatherSender"
+	<int:gateway id="weatherSender" service-interface="com.marcin.pihome.integration.weather.WeatherSender"
 		default-request-channel="weatherInputChannel" default-reply-channel="outputWeatherChannel"
 		default-reply-timeout="3000" />
 		
@@ -60,16 +60,21 @@
 	<int:transformer id="testTransformer" input-channel="weatherOutputSoapChannel"
 		method="transform" output-channel="outChannel" ref="weatherResponseStringTransformer" />
 		
-	<bean id="weatherResponseStringTransformer" class="com.marcin.pihome.services.WeatherTransformer" scope="prototype" />
+	<bean id="weatherResponseStringTransformer" class="com.marcin.pihome.integration.weather.WeatherTransformer" scope="prototype" />
 
 
 	<int-xml:unmarshalling-transformer
-		id="defaultUnmarshaller" input-channel="outChannel" output-channel="outputWeatherChannel"
+		id="defaultUnmarshaller" input-channel="outChannel" output-channel="farenheitToCelciousChannel"
 		unmarshaller="unmarshallingTransformer" />
 
 
 	<bean id="unmarshallingTransformer" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
 		<property name="packagesToScan" value="com.marcin.pihome.integration.pojo.**" />
 	</bean>
+
+	<int:transformer id="faranheitToCelciousTransformer" input-channel="farenheitToCelciousChannel"
+		method="transformFarenheitToCelcious" output-channel="outputWeatherChannel" ref="fToCTransformer" />
+
+	<bean id="fToCTransformer" class="com.marcin.pihome.integration.weather.FarenheitToCelciousTransformer" scope="prototype" />
 
 </beans>

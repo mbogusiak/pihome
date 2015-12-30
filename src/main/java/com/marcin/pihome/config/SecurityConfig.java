@@ -1,6 +1,8 @@
 package com.marcin.pihome.config;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -23,6 +26,10 @@ import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
+
+import com.marcin.pihome.pojo.PiLed;
+import com.pi4j.io.gpio.Pin;
+import com.pi4j.io.gpio.RaspiPin;
 
 
 @Configuration	
@@ -48,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    }
 	
 	  @Override
-		protected void configure(HttpSecurity http) throws Exception {
+		protected void configure(HttpSecurity http) throws Exception {System.out.println("ASDASDASDASDASD");
 		http.httpBasic().and().authorizeRequests()
 				.antMatchers("/piHome.html", "/home.html", "/login.html", "/").permitAll().anyRequest()
 				.authenticated().and().csrf()
@@ -61,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			@Override
 			protected void doFilterInternal(HttpServletRequest request,
 					HttpServletResponse response, FilterChain filterChain)
-					throws ServletException, IOException {System.out.println("sdfsdfsdfsdf");
+					throws ServletException, IOException {
 				CsrfToken csrf = (CsrfToken) request.getAttribute(CsrfToken.class
 						.getName());
 				if (csrf != null) {
@@ -85,5 +92,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return repository;
 	}
 
-	
 }

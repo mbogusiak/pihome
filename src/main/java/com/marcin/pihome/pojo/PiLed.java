@@ -1,9 +1,12 @@
 package com.marcin.pihome.pojo;
 
+import com.pi4j.io.gpio.GpioPinDigitalOutput;
+
 public class PiLed {
 	
 	private String name;
 	private int pinNr;
+	private GpioPinDigitalOutput gpio;
 	
 	public PiLed(String name, int pinNr)
 	{
@@ -25,6 +28,14 @@ public class PiLed {
 
 	public void setPinNr(int pinNr) {
 		this.pinNr = pinNr;
+	}
+
+	public GpioPinDigitalOutput getGpio() {
+		return gpio;
+	}
+
+	public void setGpio(GpioPinDigitalOutput gpio) {
+		this.gpio = gpio;
 	}
 
 }

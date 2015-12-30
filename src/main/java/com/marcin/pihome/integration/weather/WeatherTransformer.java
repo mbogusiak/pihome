@@ -1,4 +1,4 @@
-package com.marcin.pihome.services;
+package com.marcin.pihome.integration.weather;
 
 
 import org.springframework.messaging.Message;
@@ -9,7 +9,7 @@ public class WeatherTransformer {
 
 	public String transform(Message<GetWeatherResponse> payload) 
 	{
-		GetWeatherResponse r = payload.getPayload();
-		return  r.getGetWeatherResult();
+		GetWeatherResponse response = payload.getPayload();
+		return  response.getGetWeatherResult();
 	}
 }

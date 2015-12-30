@@ -3,8 +3,22 @@ package com.marcin.pihome.integration.pojo;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 @XmlRootElement(name = "CurrentWeather")
+@Document(collection = "currentWeather")
 public class CurrentWeather {
+	@Id
+	private String id;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	@XmlElement(name = "Status")
 	private String Status;
 	@XmlElement(name = "Time")
