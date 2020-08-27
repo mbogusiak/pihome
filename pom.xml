@@ -14,7 +14,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.2.1.RELEASE</version>
 	</parent>
-
+removeme
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
