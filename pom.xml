@@ -22,7 +22,7 @@ removeme
 		<cxf.version>2.7.5</cxf.version>
  	 <start-class> com.marcin.pihome.PiHome</start-class>
 	</properties>
-
+sd
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
